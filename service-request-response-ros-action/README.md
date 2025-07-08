@@ -1,5 +1,18 @@
 # Example of ROS-Based agent
 
+This example shows how to set up and use actions realized through ROS services that return some response.
+
+There is a single agent, that has the action `do_get_loggers` in its repertory. This action is realzed through the service `/turtlesim/get_loggers` of the [Turtlesim simulator](https://wiki.ros.org/turtlesim). The connection between the action and the service is set in the corresponding yaml file:
+```
+  actions:       
+    serviceRequestActions:           
+        - actionName: do_get_loggers
+          serviceName: /turtlesim/get_loggers          
+          hasReturn: true
+```
+
+The key `hasReturn` is set to `true`, indicating that this action returns a valua that can be used by the agent.
+
 ## Scenario
 This example illustrates agent actions that correspond to ROS service requests. It contains a randomly moving turtle agent (see the agent code [here](src/agt/sample_agent.asl)). The turtle agent moves itself by executing the action ```move_turtle```. This action is concretely realized through the ROS service ```/turtle1/teleport_relative```. This service does not have a response message. Actions based on services without response handling are triggered by the ```move_turtle``` internal action.
 
