@@ -1,0 +1,35 @@
+- device_id: sample_roscore #device identifier. It is up to the designer to choose this name.
+  className:  embedded.mas.bridges.ros.RosMaster
+  microcontroller: 
+      id: ros1
+      className: DefaultRos4EmbeddedMas  
+      connectionString: ws://localhost:9090 #connection with ROS      
+  perceptionTopics:
+      - topicName: array_topic
+        topicType: embedded_mas_examples/ExampleMsgWithArray      
+      - topicName: client_count
+        topicType: std_msgs/Int32
+  actuators:
+    - actuator_id: actuator_1
+      topicWritingActuations:          
+        - actuation_id: write_to_array
+          topicName: /array_topic
+          topicType: embedded_mas_examples/ExampleMsgWithArray
+          parameters:  
+            - x
+            - y:
+               - [y1, y2]
+               - [y1, y2]
+               - [y1, y2]
+            - z
+             
+- actions:
+  - update_value:
+    - [sample_roscore.actuator_1.write_to_array]
+
+# rostopic pub /array_topic embedded_mas_examples/ExampleMsgWithArray  "x: 10
+# y:
+# - {y1: 1, y2: 2}
+# - {y1: 3, y2: 4}
+# - {y1: 5, y2: 6}
+# z: 99"
