@@ -35,8 +35,8 @@ void loop()
      String s = Serial.readString();     
      Serial.println(communication.actuationName(s));
      String actuationName = communication.actuationName(s);
-     int delay_time = communication.paramInt(s,0); //the delay time is the 1st parameter 
-     if(actuationName.equals("light_on")){ //if the agent sends "light_on", then switch the light on
+     int delay_time = communication.paramInt(s,0); //get the 1st parameter - the delay time 
+     if(actuationName.equals("light_on")){ //if the actuation is "light_on", then switch the light on
         Serial.println(delay_time);
         digitalWrite(LIGHT,1); 
         light_state = 1; 
