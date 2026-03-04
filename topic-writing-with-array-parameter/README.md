@@ -37,6 +37,11 @@ embedded_mas_examples/ExampleArray[] y
 int32 z
 ```
 
+To publish values in this topic via terminal, use the following command:
+```
+rostopic pub /array_topic embedded_mas_examples/ExampleMsgWithArray  "{x: 10, y: [{y1: 1, y2: 2}, {y1: 3, y2: 4}], z: 20}"
+```
+
 The configuration of this action, specified [here](src/agt/sample_agent.yaml), is shown below. The parameters `x` and `z` are configured as usual. The parameter `y` is composed of three arrays of fields `y1` and `y2`.
 ```
 topicWritingActions:          
