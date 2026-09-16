@@ -1,0 +1,36 @@
+devices:  
+  - device_id: ros_device_1 #device identifier. It is up to the designer to choose this name.
+    className:  embedded.mas.bridges.ros.RosMaster
+    microcontroller: 
+      id: ros1 #microcontroller identifier. It is up to the designer to choose this name.
+      connectionString: ws://localhost:9090 #connection with ROS
+      className: DefaultRos4EmbeddedMas  
+    perceptionTopics:         
+      - topicName: turtle1/pose
+        topicType: turtlesim/Pose
+        beliefName: position
+        ignoreValues:
+           - theta
+           - linear_velocity
+           - angular_velocity
+      - topicName: turtle1/cmd_vel
+        topicType: geometry_msgs/Twist
+        beliefName: velocity
+        ignoreValues:
+           - linear.z
+           - angular
+    actuators:
+      - actuator_id: actuator1
+        serviceRequestActuations:
+          - actuation_id: move_act
+            serviceName: /turtle1/teleport_relative
+            parameters:
+              - linear
+              - angular
+            
+actions:
+  - name: move
+    parameters: [l, a]
+    sequence:
+      - [{actuation: ros_device_1.actuator1.move_act, param_mapping: {linear: l, angular: a}}]    
+  
