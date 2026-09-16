@@ -45,8 +45,8 @@ perceptionTopics:
            - linear.z
            - angular
 ```
-
-Notice that nested fields are chained with a `.`, as in the case of `linear.z`.
+- Ignoring a field implies to ignore all its nested fields (if they exist). For example, ignoring the field `angular` implies to ignore `angular.x`, `angular.y`, and `angular.z`.
+- Nested to-ignore fields are chained with a `.`, as in the case of `linear.z`.
 
 # 3. Requirements
 - Java JRE >= 21
