@@ -55,4 +55,5 @@ perceptionTopics:
 
 # 4. Running the example
 - `./launch_ros.sh` (preceed with `sudo` if needed), to launch the ROS nodes;
-- `.gradlew run`, to start tje JaCaMo application.
+- Open [http://localhost:8080/vnc.html][http://localhost:8080/vnc.html] to see the simulator;
+- In a terminal, type `.gradlew run`, to start the JaCaMo application.
