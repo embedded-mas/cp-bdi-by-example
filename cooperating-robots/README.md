@@ -8,7 +8,7 @@ This application contains two turtle agents (see the agent code [here](src/agt/s
 - [Docker](https://www.docker.com/)
 
 # 4. Running the example
-Launch the first robot: `./gradlew turtle1`
-Launch the second robot: `./gradlew turtle2`
+Launch the first robot: `./run_gradlew turtle1`
+Launch the second robot: `./run_gradlew turtle2`
 
 
